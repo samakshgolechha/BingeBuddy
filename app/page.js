@@ -92,16 +92,16 @@ export default function Home() {
         {/* <EnhancedLogo /> */}
 
         {/* Page Header */}
-        <div className="max-w-7xl mx-auto mb-12">
-          <h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white mb-4">
-            Welcome to
-          </h1>
-          <h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-red-800 mb-4 ">
-            BingeBuddy
-          </h1>
-          <p className="text-white text-center text-lg max-w-2xl mx-auto mt-10">
-            We know what you'll love—because it's built just for you
-          </p>
+     <div className="max-w-7xl mx-auto mb-12">
+       <h1 className="font-poppins font-bold text-2xl md:text-4xl text-center text-white mb-1 tracking-wide">
+          Welcome to
+       </h1>
+       <h1 className="font-poppins font-bold text-3xl md:text-6xl text-center text-red-700 mb-2 tracking-wide">
+          BingeBuddy
+       </h1>
+       <p className="font-sans text-white text-center text-base max-w-2xl mx-auto mt-10 font-light">
+        We know what you'll love because it's built just for you
+        </p>
 
           {/* Search Bar */}
           <div className="mb-12 mt-5">

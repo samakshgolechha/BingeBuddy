@@ -1,16 +1,25 @@
 import "./globals.css";
 import background from "../public/background.jpg";
 
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Inter, Roboto_Mono, Poppins  } from "next/font/google";
 
 const interSans = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  style: ["normal", "italic"],  
+  weight: ["300", "400", "500", "600", "700"],  
 });
+
 
 const robotoMono = Roboto_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata = {
@@ -35,7 +44,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body
-        className={`${interSans.variable} ${robotoMono.variable} antialiased relative`}
+        className={`${interSans.variable} ${robotoMono.variable} ${poppins.variable} antialiased relative`}
         style={{
           backgroundImage: `url('/background.jpg')`,
           backgroundSize: "cover",
