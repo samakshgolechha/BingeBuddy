@@ -1,12 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import background from "../public/background.jpg"
-const geistSans = Geist({
+import background from "../public/background.jpg";
+
+import { Inter, Roboto_Mono } from "next/font/google";
+
+const interSans = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const robotoMono = Roboto_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -31,13 +33,14 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
+
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${interSans.variable} ${robotoMono.variable} antialiased relative`}
         style={{
-          backgroundImage:`url('/background.jpg')`,
+          backgroundImage: `url('/background.jpg')`,
           backgroundSize: "cover",
           backgroundRepeat: "repeat-y",
-          backgroundAttachment: "fixed"
+          backgroundAttachment: "fixed",
         }}
       >
         <div className="fixed top-0 left-0 w-full h-full bg-black/60 -z-10" />

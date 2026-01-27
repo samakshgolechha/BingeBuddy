@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-const poster_cache = await import('../backend/poster_cache.json', { assert: { type: 'json' } });
-
+import poster_cache from "../backend/poster_cache.json" ;
 
 const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
     const [searchTerm, setSearchTerm] = useState(query || "");
@@ -12,13 +11,12 @@ const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [focusedIndex, setFocusedIndex] = useState(-1);
     // const router = useRouter();
-
     const searchRef = useRef(null);
     const debounceRef = useRef(null);
 
     const searchMoviesAPI = async (query) => {
 
-        const response = await fetch(`http://127.0.0.1:5000/get-title-suggestions/${query}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/get-title-suggestions/${query}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,11 +27,11 @@ const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
         }
         const data = await response.json();
 
+        
         for (const movie of data) {
-            const posterUrl = poster_cache.default[movie.movie_id] || "https://via.placeholder.com/500x750?text=No+Image";
-            movie.poster = posterUrl;
-        }
-
+            const posterUrl = poster_cache[movie.movie_id] || "https://via.placeholder.com/500x750?text=No+Image";
+        movie.poster = posterUrl;
+    }
         return data
     };
 

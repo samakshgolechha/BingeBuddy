@@ -32,7 +32,7 @@ export default function Home() {
   const fetchMovies = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:5000/movies");
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movies`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -40,7 +40,7 @@ export default function Home() {
       for (const movie of data) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:5000/fetch-poster/${movie.movie_id}`
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/fetch-poster/${movie.movie_id}`
           );
           if (!res.ok) {
             throw new Error("Poster fetch failed");

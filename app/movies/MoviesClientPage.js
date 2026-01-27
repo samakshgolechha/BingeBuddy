@@ -8,6 +8,8 @@ import MovieCardLoading from "@/components/MovieCardSkeleton";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/Footer";
 
+console.log("Backend URL:", process.env.NEXT_PUBLIC_BACKEND_URL);
+
 export default function MoviesPage({ searchParams }) {
   const query = searchParams?.query || null;
   const movie_id = searchParams?.id || null;
@@ -69,7 +71,7 @@ export default function MoviesPage({ searchParams }) {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/get-movies/${searchTerm}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/get-movies/${searchTerm}`,
         {
           method: "GET",
           headers: {
@@ -87,7 +89,7 @@ export default function MoviesPage({ searchParams }) {
       for (const movie of data) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:5000/fetch-poster/${movie.movie_id}`
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/fetch-poster/${movie.movie_id}`
           );
           if (!res.ok) {
             throw new Error("Poster fetch failed");
@@ -112,7 +114,7 @@ export default function MoviesPage({ searchParams }) {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/get-movie/${movieId}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/get-movie/${movieId}`,
         {
           method: "GET",
           headers: {
@@ -129,7 +131,7 @@ export default function MoviesPage({ searchParams }) {
 
       try {
         const res = await fetch(
-          `http://127.0.0.1:5000/fetch-poster/${data.movie_id}`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/fetch-poster/${movie.movie_id}`
         );
         if (!res.ok) {
           throw new Error("Poster fetch failed");
@@ -184,7 +186,7 @@ export default function MoviesPage({ searchParams }) {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/recommend/${movieName}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/recommend/${movieName}`,
         {
           method: "GET",
           headers: {
@@ -200,7 +202,7 @@ export default function MoviesPage({ searchParams }) {
       for (const movie of data) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:5000/fetch-poster/${movie.movie_id}`
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/fetch-poster/${movie.movie_id}`
           );
           if (!res.ok) {
             throw new Error("Poster fetch failed");
